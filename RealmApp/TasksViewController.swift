@@ -18,6 +18,8 @@ class TasksViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = currentTaskList.name
+        
+        filteringData()
     }
     
     @IBAction func editButtonPressed(_ sender: Any) {
@@ -58,7 +60,10 @@ class TasksViewController: UITableViewController {
     }
     
     private func filteringData() {
+        currentTask = currentTaskList.task.filter("status = false")
+        completedTask = currentTaskList.task.filter("status = true")
         
+        tableView.reloadData()
     }
     
 
